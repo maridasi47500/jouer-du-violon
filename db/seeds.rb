@@ -1,6 +1,7 @@
 #encoding: utf-8
 
-Cat.create(name: "Technique de main gauche")
-Cat.create(name: "Technique d'archet")
-Cat.create(name: "matériel")
-Cat.create(name: "théorie")
+Cat.find_or_create_by(name: "Technique de main gauche")
+Cat.find_or_create_by(name: "Technique d'archet")
+Cat.find_or_create_by(name: "matériel")
+Cat.find_or_create_by(name: "théorie")
+Cat.find_or_create_by(name: "mes partitions")
