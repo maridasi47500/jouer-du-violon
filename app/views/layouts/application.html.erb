@@ -1,0 +1,58 @@
+#encoding: utf-8
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Jouer du violon</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  </head>
+
+  <body>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar scroll</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarScroll">
+      <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Blog
+          </a>
+          <ul class="dropdown-menu">
+<%Cat.all.each do |cat|%>
+            <li><a class="dropdown-item" href="#"><%=cat.name%></a></li>
+            <%end%>
+          </ul>
+        </li>
+<li class="nav-item">
+          <a class="nav-link " href="/posts/new" aria-disabled="true">ecrire un article</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " aria-disabled="true">partitions</a>
+        </li>
+ <li class="nav-item">
+          <a class="nav-link " aria-disabled="true">violon</a>
+        </li>
+<li class="nav-item">
+          <a class="nav-link" href="#">par où commencer</a>
+        </li>
+      </ul>
+     
+    </div>
+  </div>
+</nav>
+    <%= yield %>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<h1>Le GUIDE du VIOLONISTE débutant
+</h1>
+
+
+
+
+<ul>
+<li>mes partitions</li>
+</ul>
+
+<h3>Les dernières PARTITIONS du blog</h3>
+<%=render collection: Post.firstpartition, as: :post, partial:"myfirstpost"%>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+
+
+<%=render collection: Post.threefirstpartition, as: :post, partial:"mypost"%>
+</div>
+
+<h3>Mon blog sur le violon</h3>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+<%=render collection: Post.myfirst, as: :post, partial:"mypartition"%>
+  
+  <div class="col">
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+
+ <%=render collection: Post.fourfirst, as: :post, partial:"mypartition"%>
+</div>
+  </div>
+</div>
