@@ -1,5 +1,5 @@
 <div class="col">
-<%=link_to post, {style:"    height: 100%;    display: grid;"} do%>
+<%=link_to getpost_path(title: post.title.parameterize), {style:"    height: 100%;    display: grid;"} do%>
     <div class="card">
       <img src="/uploads/<%=post.image%>" class="card-img-top" alt="...">
       <div class="card-body">

@@ -1,6 +1,6 @@
 <div class="card">
 
-<%=link_to post do%>
+<%=link_to getpost_path(title: post.title.parameterize) do%>
   <img src="/uploads/<%=post.image%>" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title"><%=post.title%></h5>

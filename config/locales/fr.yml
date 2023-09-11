@@ -1,6 +1,6 @@
 # Sample localization file for Kaminari. You can override these values in your app's locales file if you want.
 
-en:
+fr:
   views:
     pagination:
       first: "&laquo; First"
@@ -16,8 +16,8 @@ en:
         other: "entries"
       one_page:
         display_entries:
-          zero: "No %{entry_name} found"
-          one: "Displaying <b>1</b> %{entry_name}"
-          other: "Displaying <b>all %{count}</b> %{entry_name}"
+          zero: "Page 1 sur 1"
+          one: "Page 1 sur 1"
+          other: "Page 1 sur 1"
       more_pages:
-        display_entries: "Displaying %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> of <b>%{total}</b> in total"
+        display_entries: "Page <b>%{first}&nbsp;-&nbsp;%{last}</b> sur <b>%{total}</b>"

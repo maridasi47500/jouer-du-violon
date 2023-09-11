@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
+  resources :memos
+  get "category/:name", to: "cats#show", as: :mycat
+  get ":title", to: "posts#show", as: :getpost
   resources :posts
-  resources :cats
+
+
+  resources :cats, path: "category" do
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root 'welcome#index'
   # Defines the root path route ("/")

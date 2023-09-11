@@ -1,27 +1,11 @@
-<div id="<%= dom_id post %>">
-  <p>
-    <strong>Title:</strong>
-    <%= post.title %>
-  </p>
-
-  <p>
-    <strong>Image:</strong>
-    <%= post.image %>
-  </p>
-
-  <p>
-    <strong>Content:</strong>
-    <%= post.content %>
-  </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= post.user_id %>
-  </p>
-
-  <p>
-    <strong>Cat:</strong>
-    <%= post.cat_id %>
-  </p>
-
-</div>
+ <div class="col">
+   <%=link_to getpost_path(title: post.title.parameterize) do%>
+       <div class="card">
+         <img src="/uploads/<%=post.image%>" class="card-img-top" alt="...">
+                     <div class="card-body">
+                       <h5 class="card-title"><%=post.title%></h5>
+                       <p class="card-text"><%=link_to post.cat.name,mycat_path(name:post.cat.name.parameterize)%></p>
+                                             </div>
+                                                 </div>
+                                               <%end%>
+                                                   </div>

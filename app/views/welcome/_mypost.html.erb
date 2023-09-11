@@ -1,9 +1,11 @@
  <div class="col">
+   <%=link_to getpost_path(title:post.title.parameterize) do %>
     <div class="card">
       <img src="/uploads/<%=post.image%>" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title"><%=post.title%></h5>
       </div>
     </div>
+  <%end%>
   </div>
 

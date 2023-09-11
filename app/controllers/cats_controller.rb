@@ -1,5 +1,6 @@
 class CatsController < ApplicationController
-  before_action :set_cat, only: %i[ show edit update destroy ]
+  before_action :set_cat, only: %i[ edit update destroy ]
+  before_action :set_my_cat, only: %i[ show ]
 
   # GET /cats or /cats.json
   def index
@@ -8,6 +9,7 @@ class CatsController < ApplicationController
 
   # GET /cats/1 or /cats/1.json
   def show
+    @posts=@cat.posts.page(params[:page])
   end
 
   # GET /cats/new
@@ -61,6 +63,9 @@ class CatsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_cat
       @cat = Cat.find(params[:id])
+    end
+    def set_my_cat
+      @cat = Cat.findmycat(params[:name])
     end
 
     # Only allow a list of trusted parameters through.
