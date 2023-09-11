@@ -3,8 +3,11 @@
 <h1><%=@post.title%></h1>
 <p><%=link_to @post.cat.try(:name).to_s,mycat_path(name: @post.cat.name.parameterize)%></p>
 <img src="/wp-content/uploads/2019/05/image-4.png" class="mypic"/>
+<%=simple_format(@post.content)%>
 
+<%=render @post.memos%>
 <div>
+  <%= link_to "add memo to this post", addmemo_post_path(@post) %> |
   <%= link_to "Edit this post", edit_post_path(@post) %> |
   <%= link_to "Back to posts", posts_path %>
 

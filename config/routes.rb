@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
+  resources :stuffs
   resources :memos
   get "category/:name", to: "cats#show", as: :mycat
   get ":title", to: "posts#show", as: :getpost
-  resources :posts
+  resources :posts do
+    member do
+      get "addmemo"
+    end
+  end
 
 
   resources :cats, path: "category" do

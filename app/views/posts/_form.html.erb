@@ -29,6 +29,25 @@
   <div>
     <%= form.hidden_field :user_id %>
   </div>
+  <%=form.fields_for :memos do |f|%>
+    <div>
+    <p>Memo #<%=f.index + 1%></p>
+    <%=f.fields_for :stuffs do |ff|%>
+  <div>
+    <%#= ff.label :content, style: "display: block" %>
+    <%= ff.text_area :content %>
+  </div>
+  <div>
+   destroy this point of memo
+    <%= ff.check_box :_destroy %>
+  </div>
+  <%end%>
+    </div>
+  <div>
+   destroy this memo
+    <%= f.check_box :_destroy %>
+  </div>
+  <%end%>
     <div>
           <%= form.label :cat_id, style: "display: block" %>
               <%= form.select :cat_id,options_for_select(Cat.all.collect{|h|[h.name,h.id]}) %>

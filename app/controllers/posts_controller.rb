@@ -1,10 +1,16 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[ edit update destroy ]
+  before_action :set_post, only: %i[ addmemo edit update destroy ]
   before_action :set_my_post, only: %i[ show ]
 
   # GET /posts or /posts.json
   def index
     @posts = Post.all
+  end
+  def addmemo
+    @a=@post.memos.new
+    10.times do
+      @a.stuffs.new
+    end
   end
 
   # GET /posts/1 or /posts/1.json
@@ -26,7 +32,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to post_url(@post), notice: "Post was successfully created." }
+        format.html { redirect_to getpost_url(title:@post.title.parameterize), notice: "Post was successfully created." }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +45,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to post_url(@post), notice: "Post was successfully updated." }
+        format.html { redirect_to getpost_url(title:@post.title.parameterize), notice: "Post was successfully updated." }
         format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -69,6 +75,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :image, :content, :user_id, :cat_id)
+      params.require(:post).permit(:title, :image, :content, :user_id, :cat_id,:memos_attributes=>{})
     end
 end
