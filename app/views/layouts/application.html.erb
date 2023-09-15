@@ -7,10 +7,10 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-     <%= stylesheet_link_tag "application", :media => "all" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <%= javascript_importmap_tags %>
   </head>
 
   <body>
@@ -32,7 +32,7 @@
           </a>
           <ul class="dropdown-menu">
 <%Cat.all.each do |cat|%>
-            <li><a class="dropdown-item" href="#"><%=cat.name%></a></li>
+  <li><a class="dropdown-item" href="<%=mycat_path(name: cat.name.parameterize)%>"><%=cat.name%></a></li>
             <%end%>
           </ul>
         </li>
@@ -40,7 +40,7 @@
           <a class="nav-link " href="/posts/new" aria-disabled="true">ecrire un article</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " aria-disabled="true">partitions</a>
+          <a class="nav-link " aria-disabled="true" href="<%=mycat_path(name: Cat.partition.name.parameterize)%>">partitions</a>
         </li>
  <li class="nav-item">
           <a class="nav-link " aria-disabled="true">violon</a>
