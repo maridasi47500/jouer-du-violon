@@ -6,7 +6,9 @@
 <%=simple_format(@post.content)%>
 
 <%=render @post.memos%>
+<%=render @post.myfiles%>
 <div>
+  <%= link_to "add a score to this post", addfile_post_path(@post) %> |
   <%= link_to "add memo to this post", addmemo_post_path(@post) %> |
   <%= link_to "Edit this post", edit_post_path(@post) %> |
   <%= link_to "Back to posts", posts_path %>

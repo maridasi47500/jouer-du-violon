@@ -1,6 +1,8 @@
 class Post < ApplicationRecord
 belongs_to :cat
 paginates_per 16
+has_many :myfiles
+accepts_nested_attributes_for :myfiles, allow_destroy: true
 has_many :memos
 accepts_nested_attributes_for :memos, allow_destroy: true
 validates_uniqueness_of :title

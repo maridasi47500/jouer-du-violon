@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_11_143154) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_17_030023) do
   create_table "cats", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -20,6 +20,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_11_143154) do
   create_table "memos", force: :cascade do |t|
     t.integer "post_id"
     t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "myfiles", force: :cascade do |t|
+    t.string "title"
+    t.string "filename"
+    t.integer "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -39,6 +47,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_11_143154) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "mes"
   end
 
 end

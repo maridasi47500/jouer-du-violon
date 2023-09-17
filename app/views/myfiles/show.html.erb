@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @myfile %>
+
+<div>
+  <%= link_to "Edit this myfile", edit_myfile_path(@myfile) %> |
+  <%= link_to "Back to myfiles", myfiles_path %>
+
+  <%= button_to "Destroy this myfile", @myfile, method: :delete %>
+</div>

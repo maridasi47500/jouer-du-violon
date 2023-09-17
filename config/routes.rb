@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :myfiles
   resources :stuffs
   resources :memos
   get "category/:name", to: "cats#show", as: :mycat
@@ -6,6 +7,7 @@ Rails.application.routes.draw do
   resources :posts do
     member do
       get "addmemo"
+      get "addfile"
     end
   end
 

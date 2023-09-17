@@ -1,7 +1,7 @@
 <div class="memo" id="<%= dom_id memo %>">
   <ul>
   <%memo.stuffs.each do |s|%>
-    <li><%=s.content%></li>
+    <li><%if s.mes%>mes. <%=s.mes%> - <%end%><%=s.content%></li>
   <%end%>
   </ul>
 

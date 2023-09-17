@@ -1,10 +1,13 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[ addmemo edit update destroy ]
+  before_action :set_post, only: %i[ addmemo edit update destroy addfile ]
   before_action :set_my_post, only: %i[ show ]
 
   # GET /posts or /posts.json
   def index
     @posts = Post.all
+  end
+  def addfile
+    @a=@post.myfiles.new
   end
   def addmemo
     @a=@post.memos.new
@@ -75,6 +78,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :image, :content, :user_id, :cat_id,:memos_attributes=>{})
+      params.require(:post).permit(:title, :image, :content, :user_id, :cat_id,:memos_attributes=>{},:myfiles_attributes=>{})
     end
 end
