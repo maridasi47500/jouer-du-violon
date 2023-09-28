@@ -4,3 +4,7 @@
 		    list-style-type: none;
 		        padding-left: 100px;
 		}
+		main {
+			padding-left:10%;
+			padding-right:10%;
+		}

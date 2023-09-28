@@ -32,7 +32,10 @@
   <%=form.fields_for :memos do |f|%>
     <div>
     <p>Memo #<%=f.index + 1%></p>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+
     <%=f.fields_for :stuffs do |ff|%>
+    <div class="col" style="border:1px solid darkgrey;">
   <div>
     <%#= ff.label :content, style: "display: block" %>
     <%= ff.text_area :content %>
@@ -46,7 +49,9 @@
    destroy this point of memo
     <%= ff.check_box :_destroy %>
   </div>
+    </div>
   <%end%>
+    </div>
     </div>
   <div>
    destroy this memo
