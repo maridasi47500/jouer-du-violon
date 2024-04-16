@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+#post_title{
+height:70px;
+width:100%;
+font-size:20px;
+}
+#post_content{
+width:100%;
+padding:2%;
+min-height:400px;
+font-size:20px;
+}

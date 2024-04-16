@@ -59,8 +59,8 @@
   </div>
   <%end%>
     <div>
-          <%= form.label :cat_id, style: "display: block" %>
-              <%= form.select :cat_id,options_for_select(Cat.all.collect{|h|[h.name,h.id]}) %>
+          <%= form.label :cat_id, style: "display: block;" %>
+              <%= form.select :cat_id,Cat.all.collect{|h|[h.name,h.id]} %>
                 </div>
 
   <div>
