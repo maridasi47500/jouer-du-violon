@@ -1,0 +1,20 @@
+<%= form_with(model: [ @post, @card ], local: true) do |form| %>
+  <div class="field">
+    <%= form.label :mesure %>
+    <%= form.text_field :mesure %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nuance %>
+    <% @nuances.each do |nuance| %>
+      <%= form.radio_button :nuance_id, nuance.id %>
+      <%= nuance.name %>
+    <% end %>
+  </div>
+
+  <%= form.hidden_field :post_id, value: @post.id %>
+
+  <div class="actions">
+    <%= form.submit 'Add Card' %>
+  </div>
+<% end %>

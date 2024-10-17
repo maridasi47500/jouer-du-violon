@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @nuance %>
+
+<div>
+  <%= link_to "Edit this nuance", edit_nuance_path(@nuance) %> |
+  <%= link_to "Back to nuances", nuances_path %>
+
+  <%= button_to "Destroy this nuance", @nuance, method: :delete %>
+</div>

@@ -15,6 +15,10 @@ class PostsController < ApplicationController
       @a.stuffs.new
     end
   end
+  def new_with_cards
+    @post = Post.new
+    @post.cards.build
+  end
 
   # GET /posts/1 or /posts/1.json
   def show

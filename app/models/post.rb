@@ -6,6 +6,9 @@ accepts_nested_attributes_for :myfiles, allow_destroy: true
 has_many :memos
 accepts_nested_attributes_for :memos, allow_destroy: true
 validates_uniqueness_of :title
+  has_many :cards
+  accepts_nested_attributes_for :cards, allow_destroy: true
+
 def self.firstpartition
 catid=Cat.where("name like ?","%partition%")[0].try(:id)
 self.where(cat_id:catid).order(created_at: :desc).limit(1).offset(0)

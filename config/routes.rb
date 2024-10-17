@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :cards
+  resources :nuances
   resources :myfiles
   resources :stuffs
   resources :memos
@@ -9,6 +11,12 @@ Rails.application.routes.draw do
       get "addmemo"
       get "addfile"
     end
+    resources :cards, only: [:new, :create, :index]
+    member do
+      get 'new_with_cards'
+    end
+
+
   end
 
 

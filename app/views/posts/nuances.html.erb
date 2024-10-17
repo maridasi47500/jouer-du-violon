@@ -1,0 +1,36 @@
+<%= form_with(model: @post, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
+
+  <%= form.fields_for :cards do |card_form| %>
+    <div class="nested-fields">
+      <div class="field">
+        <%= card_form.label :mesure %>
+        <%= card_form.text_field :mesure %>
+      </div>
+
+      <div class="field">
+        <%= card_form.label :nuance %>
+        <% @nuances.each do |nuance| %>
+          <%= card_form.radio_button :nuance_id, nuance.id %>
+          <%= nuance.name %>
+        <% end %>
+      </div>
+
+      <%= card_form.hidden_field :post_id, value: @post.id %>
+      <%= card_form.check_box :_destroy %> Remove
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit 'Add Post with Cards' %>
+  </div>
+<% end %>
+

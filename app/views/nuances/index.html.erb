@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Nuances</h1>
+
+<div id="nuances">
+  <% @nuances.each do |nuance| %>
+    <%= render nuance %>
+    <p>
+      <%= link_to "Show this nuance", nuance %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New nuance", new_nuance_path %>
