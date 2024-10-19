@@ -7,6 +7,28 @@
 
 <%=render @post.memos%>
 <%=render @post.myfiles%>
+<!-- Assuming you have Bootstrap CSS and JS included in your layout -->
+<div class="container mt-5">
+  <div class="row">
+    <% @post.cards.group_by(&:measure).each do |measure, cards| %>
+      <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+          <div class="card-body d-flex flex-column align-items-center">
+            <h5 class="card-title" style="font-size: 24px;">Measure: <%= measure %></h5>
+            <div class="d-flex flex-wrap justify-content-center">
+                            <% cards.each do |card| %>
+
+                <% nuance=card.nuance %>
+                  <img src="<%= nuance.image %>" alt="<%= nuance.name %>" class="img-thumbnail" style="width: 50px; height: 50px; margin: 5px;">
+                <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
 <div>
   <%= link_to "add a score to this post", addfile_post_path(@post) %> |
   <%= link_to "add memo to this post", addmemo_post_path(@post) %> |
@@ -14,6 +36,8 @@
   <%= link_to "Back to posts", posts_path %> |
   <%= link_to 'New Card', new_post_card_path(@post) %>
 <%= link_to 'New card for post', new_with_cards_post_path(@post) %>
+<%= link_to 'Create New Post with Cards', new_with_cards1_post_path(@post) %>
+
 
 
   <%= button_to "Destroy this post", @post, method: :delete %>

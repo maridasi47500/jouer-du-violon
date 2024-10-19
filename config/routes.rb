@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     resources :cards, only: [:new, :create, :index]
     member do
       get 'new_with_cards'
+      get 'new_with_cards1'
+
     end
 
 
