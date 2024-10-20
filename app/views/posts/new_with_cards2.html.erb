@@ -1,0 +1,28 @@
+<h1>ajouter des nuances à <%=@post.title%></h1>
+<%= form_with(model: @post, url: post_path(@post), local: true) do |form| %>
+  <div class="field">
+    <%= form.hidden_field :title%>
+    <%= form.label :nuance, "Choose a Nuance", style: "font-size: 18px;" %>
+    <% Nuance.all.each do |nuance| %>
+      <div class="form-check">
+        <%= radio_button_tag "nuance_id", nuance.id, false, class: "form-check-input", id: "nuance_#{nuance.id}" %>
+        <%= form.label "nuance_#{nuance.id}", nuance.name, class: "form-check-label", style: "font-size: 18px; cursor: pointer;" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :measures, "Choose Measures", style: "font-size: 18px;" %>
+    <%1.upto(400).each do |x|%>
+    <div class="form-check">
+      <%= check_box_tag "measures[]", x, false, class: "form-check-input", id: "measure_#{x.to_s}" %>
+      <%= label_tag "measure_#{x}", "#{x}", class: "form-check-label", style: "font-size: 18px; cursor: pointer;" %>
+    </div>
+<% end %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Save Post and Create Cards" %>
+  </div>
+<% end %>
+

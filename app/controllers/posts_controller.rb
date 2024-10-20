@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[ new_with_cards1 new_with_cards addmemo edit update destroy addfile ]
+  before_action :set_post, only: %i[ new_with_cards1 new_with_cards2 new_with_cards addmemo edit update destroy addfile ]
   before_action :set_my_post, only: %i[ show ]
 
   # GET /posts or /posts.json
@@ -93,11 +93,16 @@ class PostsController < ApplicationController
     end
   def create_cards_for_post(post)
     measure = params[:measure]
-    nuance_ids = params[:nuance_ids]
-    post.cards.destroy_all  # Clear existing cards
+    nuance_ids = params[:nuance_ids].to_a
     nuance_ids.each do |nuance_id|
       Card.create(post_id: post.id, nuance_id: nuance_id, measure: measure)
     end
+    nuance_id = params[:nuance_id]
+    measures = params[:measures].to_a
+    measures.each do |measure|
+      Card.create(post_id: post.id, nuance_id: nuance_id, measure: measure)
+    end
+
   end
 
 

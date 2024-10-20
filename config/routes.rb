@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     member do
       get 'new_with_cards'
       get 'new_with_cards1'
+      get 'new_with_cards2'
 
     end
 

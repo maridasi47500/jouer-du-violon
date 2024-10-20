@@ -1,13 +1,7 @@
-<%= form_with(model: @post, url: post_path(@post), local: true) do |form| %>
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
+<h1>ajouter des nuances à <%=@post.title%></h1>
 
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
-  </div>
+<%= form_with(model: @post, url: post_path(@post), local: true) do |form| %>
+    <%= form.hidden_field :title %>
 
   <div class="field">
     <%= form.label :measure %>
@@ -16,11 +10,15 @@
   </div>
 
   <div class="field">
-    <%= form.label :nuances %>
-    <% @nuances.each do |nuance| %>
-      <%= check_box_tag 'nuance_ids[]', nuance.id, @post.nuance_ids.include?(nuance.id) %>
-      <%= nuance.name %>
-    <% end %>
+    <%= form.label :nuances, style: "font-size: 18px;" %>
+<% @nuances.each do |nuance| %>
+  <div class="form-check">
+    <%= check_box_tag "nuance_ids[]", nuance.id, false, class: "", id: "nuance_#{nuance.id}" %>
+      <%= form.label "nuance_#{nuance.id}", nuance.name, for: "nuance_#{nuance.id}", class: "", style: "font-size: 18px; cursor: pointer;" %>
+
+  </div>
+<% end %>
+
   </div>
 
   <div class="actions">

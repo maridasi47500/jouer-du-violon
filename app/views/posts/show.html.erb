@@ -7,27 +7,79 @@
 
 <%=render @post.memos%>
 <%=render @post.myfiles%>
-<!-- Assuming you have Bootstrap CSS and JS included in your layout -->
-<div class="container mt-5">
-  <div class="row">
+<div id="measureCarousel" class="carousel slide container mt-5" data-ride="carousel">
+  <div class="carousel-inner">
+    <% active = 'active' %>
     <% @post.cards.group_by(&:measure).each do |measure, cards| %>
-      <div class="col-md-4">
-        <div class="card mb-4 shadow-sm">
-          <div class="card-body d-flex flex-column align-items-center">
-            <h5 class="card-title" style="font-size: 24px;">Measure: <%= measure %></h5>
-            <div class="d-flex flex-wrap justify-content-center">
-                            <% cards.each do |card| %>
-
-                <% nuance=card.nuance %>
-                  <img src="<%= nuance.image %>" alt="<%= nuance.name %>" class="img-thumbnail" style="width: 50px; height: 50px; margin: 5px;">
-                <% end %>
+      <div class="carousel-item <%= active %>">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <div class="card-body d-flex flex-column align-items-center">
+                <h5 class="card-title" style="font-size: 24px;">Measure: <%= measure %></h5>
+                <div class="d-flex flex-wrap justify-content-center">
+                  <% cards.each do |card| %>
+                    <% nuance=card.nuance %>
+                    <img src="/uploads/<%= nuance.image %>" alt="<%= nuance.name %>" class="img-thumbnail" style="height: 50px; margin: 5px;">
+                  <% end %>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <% active = '' %>
     <% end %>
   </div>
+
+  <a class="carousel-control-prev" href="#measureCarousel" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#measureCarousel" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
 </div>
+<!-- Bootstrap Carousel -->
+<div id="measureCarousel1" class="carousel slide container mt-5" data-ride="carousel">
+  <div class="carousel-inner">
+    <% active = 'active' %>
+    <% @post.cards.group_by(&:nuance).each do |nuance, cards| %>
+      <div class="carousel-item <%= active %>">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card mb-4 shadow-sm">
+              <div class="card-body d-flex flex-column align-items-center">
+                <h5 class="card-title" style="font-size: 24px;">Nuance: <%= nuance.name %>
+                    <img src="/uploads/<%= nuance.image %>" alt="<%= nuance.name %>" class="img-thumbnail" style="height: 50px; margin: 5px;">
+
+                </h5>
+                <div class="d-flex flex-wrap justify-content-center">
+                  mesures
+                  <% cards.each do |card| %>
+                    <span class="badge badge-primary" style="font-size: 18px; margin: 5px;"><%= card.measure %></span>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% active = '' %>
+    <% end %>
+  </div>
+
+  <a class="carousel-control-prev" href="#measureCarousel1" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#measureCarousel1" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
 
 <div>
   <%= link_to "add a score to this post", addfile_post_path(@post) %> |
@@ -37,8 +89,28 @@
   <%= link_to 'New Card', new_post_card_path(@post) %>
 <%= link_to 'New card for post', new_with_cards_post_path(@post) %>
 <%= link_to 'Create New Post with Cards', new_with_cards1_post_path(@post) %>
+<%= link_to 'Create New Cards with mesures', new_with_cards2_post_path(@post) %>
+
 
 
 
   <%= button_to "Destroy this post", @post, method: :delete %>
 </div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    $('#measureCarousel').carousel({
+      interval: 5000, // Change interval time in milliseconds
+      ride: 'carousel'
+    });
+
+    // Custom controls can also be added here, if needed
+    document.querySelector('.carousel-control-prev').addEventListener('click', function() {
+      $('#measureCarousel').carousel('prev');
+    });
+
+    document.querySelector('.carousel-control-next').addEventListener('click', function() {
+      $('#measureCarousel').carousel('next');
+    });
+  });
+</script>
+
