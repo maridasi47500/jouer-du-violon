@@ -8,3 +8,4 @@
 # jouer-du-violon
 
 
+![my photo](pic1.png)
